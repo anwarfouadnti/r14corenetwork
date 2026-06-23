@@ -1,0 +1,18 @@
+172.25.250.9  #worstation
+
+192.168.1.50  #windows15
+
+
+[myrouters]
+iosxe1
+iosxe2
+#iosxe3
+#iosxe4
+#iosxe5
+
+[myrouters:vars]
+ansible_network_os=ios
+
+[myjunos]
+junos1vm
+junos2vm

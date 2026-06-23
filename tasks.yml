@@ -1,0 +1,11 @@
+---
+- name: playbook01 medo tasks
+  hosts: myrouters
+  connection: network_cli
+  remote_user: student
+  gather_facts: yes
+  tasks:
+    - name: task01 doooooooo print facts
+      debug:
+        var: ansible_facts
+
