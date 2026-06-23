@@ -9,3 +9,22 @@
       debug:
         var: ansible_facts
 
+
+    - name: create a new user
+      cisco.ios.ios_user:
+        name: medo
+        nopassword: true
+        sshkey: "{{ lookup('file', '~/.ssh/lab_rsa.pub') }}"
+        state: present  
+        privilege: 15
+
+
+
+    - name: Configure the login banner
+      cisco.ios.ios_banner:
+        banner: login
+        text: |
+          this is NTI login banner
+          that contains a multiline
+          string
+        state: present
