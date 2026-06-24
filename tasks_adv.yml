@@ -3,7 +3,6 @@
   hosts: myrouters
   gather_facts: yes
   vars:
-    U: admin1
     IP: "{{IP2}}"
     B: "MCIT"
     H: "{{inventory_hostname}}"
@@ -12,27 +11,13 @@
       debug:
         var: ansible_facts
 
-
-    - name: T2 create a new user
-      cisco.ios.ios_user:
-        name: "{{U}}"
-        nopassword: true
-        sshkey: "{{ lookup('file', '~/.ssh/lab_rsa.pub') }}"
-        state: present  
-        privilege: 15
-      notify: "T3 banner"
-
-
-
-
-
-    - name: T4 configure interface settings
-      cisco.ios.ios_config:
-        lines:
-        - description test interface
-        - ip address {{IP}} 255.255.255.0
-        parents: interface GigabitEthernet2
-      notify: "T5 up"
+    - name: from out yaml
+      import_tasks: cusers.yml
+      vars:
+        U: admin3
+        
+    - name: from out yml
+      import_tasks: setip.yml
 
 
     - name: T6 Apply the provided configuration
