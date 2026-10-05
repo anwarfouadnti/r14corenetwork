@@ -1,0 +1,32 @@
+---
+- name: p1
+  hosts: myrouters
+  tasks:
+    - name: cisco commands
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: outs1
+
+    - name: printout
+      debug:
+        var: outs1.stdout_lines
+
+    - name: printout ip2
+      debug:
+        var: IP2  
+
+    - name: cisco commands
+      cisco.ios.ios_command:
+        commands:
+          - enable
+          - configure terminal
+          - username medo2 privilege 15 secret 123456
+          - exit
+          - write memory
+          - show running-config | include username
+      register: outs2
+
+    - name: printout
+      debug:
+        var: outs2.stdout_lines
