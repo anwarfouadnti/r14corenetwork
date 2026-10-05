@@ -14,3 +14,11 @@ ansible-navigator doc cisco.ios.facts
 
 
  ansible-navigator run basics.yml --syntax-check
+
+
+ git clone https://github.com/anwarfouadnti/r14corenetwork
+ cd r14corenetwork/
+ git checkout -b ex01
+ git add mytasks01.yml 
+ git commit -m ""hhhh
+ git push -u origin ex01 
